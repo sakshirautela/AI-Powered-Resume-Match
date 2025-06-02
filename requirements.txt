@@ -1,0 +1,7 @@
+streamlit
+requests
+python-dotenv
+spacy
+pdfplumber
+numpy
+docx2txt
