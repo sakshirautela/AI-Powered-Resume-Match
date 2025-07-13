@@ -1,7 +1,7 @@
 import streamlit as st
 import pdfplumber
 import docx2txt  
-from src.model.api import extract_skills_with_gemini
+from src.model.api import extract_skills_with_langchain
 from src.model.match_score import calculate_skill_match
 from dotenv import load_dotenv
 import os
@@ -33,8 +33,8 @@ if resume_file and jd_text:
     resume_text = extract_text_from_file(resume_file)
 
     with st.spinner("🔍 Extracting skills ..."):
-        resume_skills = extract_skills_with_gemini(resume_text)
-        jd_skills = extract_skills_with_gemini(jd_text)
+        resume_skills = extract_skills_with_langchain(resume_text)
+        jd_skills = extract_skills_with_langchain(jd_text)
 
     score = calculate_skill_match(resume_skills, jd_skills)
 

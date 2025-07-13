@@ -1,7 +1,6 @@
 def calculate_skill_match(resume_skills, jd_skills):
-    resume_set = set(map(str.lower, resume_skills))
-    jd_set = set(map(str.lower, jd_skills))
-    if not jd_set:
-        return 0.0
-    match = resume_set & jd_set
-    return round(len(match) / len(jd_set) * 100, 2)
+    if not resume_skills or not jd_skills:
+        return 0
+    matched = [skill for skill in jd_skills if skill.lower() in map(str.lower, resume_skills)]
+    score = (len(matched) / len(jd_skills)) * 100
+    return round(score)
